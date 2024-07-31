@@ -1,19 +1,20 @@
 // @ts-check
+
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('test', async ({ page }) => {
+  await page.goto('https://demo.playwright.dev/todomvc/');
+  const input = page.getByPlaceholder('What needs to be done?')
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+  // await input.click();
+  const taskName = "Finish Hexlet's course"
+  await input.fill(taskName);
+  await input.press('Enter');
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  // await input.click();
+  // await input.fill('second todo');
+  // await input.press('Enter');
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  const item = page.getByTestId('todo-title').filter({ hasText: taskName })
+  await expect(item).toBeVisible()
 });
