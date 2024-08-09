@@ -1,7 +1,7 @@
 // @ts-check
 
 import { test, expect } from '@playwright/test';
-import TodoMVCPage from '../models/TodoMVCPage';
+import TodoMVCPage from '../../models/TodoMVCPage';
 
 test('test', async ({ page }) => {
   await page.goto('https://demo.playwright.dev/todomvc/');

@@ -38,16 +38,19 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: /e2e/,
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      testMatch: /e2e/,
     },
 
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
+      testMatch: /e2e/,
     },
 
     /* Test against mobile viewports. */
@@ -60,6 +63,16 @@ export default defineConfig({
     //   use: { ...devices['iPhone 12'] },
     // },
 
+    {
+      name: 'API Tests',
+      // use: {
+      //   baseURL: 'https://staging-api.example.com',
+      //   extraHTTPHeaders: {
+      //     'Authorization': `Bearer STAGING_API_TOKEN`,
+      //   },
+      // },
+      testMatch: /integration/,
+    }
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
