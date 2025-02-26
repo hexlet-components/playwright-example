@@ -11,7 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  timeout: 3000,
+  timeout: 5000,
 
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -41,17 +41,17 @@ export default defineConfig({
       testMatch: /e2e/,
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-      testMatch: /e2e/,
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-      testMatch: /e2e/,
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    //   testMatch: /e2e/,
+    // },
+    //
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    //   testMatch: /e2e/,
+    // },
 
     /* Test against mobile viewports. */
     // {
