@@ -1,9 +1,9 @@
-import { Page } from '@playwright/test'
+// @ts-check
 
 export default class TodoMVCPage {
   /**
-   * @param {Page} page
-   */
+    * @param {import('@playwright/test').Page} page
+    */
   constructor(page) {
     this.page = page;
     this.inputForNewTodo = page.getByPlaceholder('What needs to be done?')
@@ -13,10 +13,16 @@ export default class TodoMVCPage {
     await this.page.goto('https://demo.playwright.dev/todomvc/');
   }
 
+  /**
+   * @param {string} taskName
+   */
   getTaskItemByName(taskName) {
     return this.page.getByTestId('todo-title').filter({ hasText: taskName })
   }
 
+  /**
+   * @param {string} text
+   */
   async addTodo(text) {
     // await this.inputForNewTodo.click()
     await this.inputForNewTodo.fill(text)
