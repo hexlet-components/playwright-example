@@ -6,3 +6,6 @@ report:
 
 test-ui:
 	npx playwright test --ui
+
+report-allure:
+	npx allure serve
