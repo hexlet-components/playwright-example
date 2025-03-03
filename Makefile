@@ -1,3 +1,6 @@
+db-push:
+	npx drizzle-kit push
+
 test:
 	npx playwright test
 
