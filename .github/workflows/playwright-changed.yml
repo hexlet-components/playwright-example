@@ -7,12 +7,12 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           # Force a non-shallow checkout, so that we can reference $GITHUB_BASE_REF.
           # See https://github.com/actions/checkout for more details.
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: lts/*
       - name: Install dependencies
@@ -21,7 +21,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run changed Playwright tests
         run: npx playwright test --only-changed=$GITHUB_BASE_REF
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
