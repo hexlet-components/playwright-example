@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "oxlint --config=.oxlintrc.json .",
+    "lint:fix": "oxfmt --ignore-path=.oxfmtignore . && oxlint --config=.oxlintrc.json --fix .",
+    "format": "oxfmt --ignore-path=.oxfmtignore .",
+    "format:check": "oxfmt --ignore-path=.oxfmtignore --check ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,9 +16,12 @@
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0",
     "allure-commandline": "^2.43.0",
-    "allure-playwright": "^3.10.2"
+    "allure-playwright": "^3.10.2",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0"
   },
   "dependencies": {
     "npm-check-updates": "^22.2.9"
-  }
+  },
+  "packageManager": "pnpm@11.20.0"
 }
