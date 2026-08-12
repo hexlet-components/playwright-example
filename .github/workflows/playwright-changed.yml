@@ -23,8 +23,11 @@ jobs:
         run: make install
       - name: Install Playwright Browsers
         run: make install-browsers
+      # Playwright зовётся напрямую, а не через `make test`: этому прогону
+      # нужен аргумент --only-changed, а цель Makefile аргументы не принимает
+      # и падает с «unrecognized option».
       - name: Run changed Playwright tests
-        run: make test --only-changed=$GITHUB_BASE_REF
+        run: pnpm exec playwright test --only-changed=$GITHUB_BASE_REF
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
