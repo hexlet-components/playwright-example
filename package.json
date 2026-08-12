@@ -21,7 +21,7 @@
     "oxlint": "^1.78.0"
   },
   "dependencies": {
-    "npm-check-updates": "^22.2.9"
+    "npm-check-updates": "^23.0.2"
   },
   "packageManager": "pnpm@11.20.0"
 }
