@@ -12,15 +12,19 @@ jobs:
           # Force a non-shallow checkout, so that we can reference $GITHUB_BASE_REF.
           # See https://github.com/actions/checkout for more details.
           fetch-depth: 0
+      # pnpm ставится до setup-node: тот с cache: pnpm ищет уже существующий
+      # бинарь, чтобы вычислить путь к store.
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version: lts/*
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: make install
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
+        run: make install-browsers
       - name: Run changed Playwright tests
-        run: npx playwright test --only-changed=$GITHUB_BASE_REF
+        run: make test --only-changed=$GITHUB_BASE_REF
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
