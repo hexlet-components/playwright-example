@@ -1,22 +1,17 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      # pnpm ставится до setup-node: тот с cache: pnpm ищет уже существующий
-      # бинарь, чтобы вычислить путь к store.
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: lts/*
-          cache: pnpm
+
+      - uses: jdx/mise-action@v5
       - name: Install dependencies
         run: make install
       - name: Install Playwright Browsers

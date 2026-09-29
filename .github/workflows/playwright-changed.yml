@@ -12,13 +12,8 @@ jobs:
           # Force a non-shallow checkout, so that we can reference $GITHUB_BASE_REF.
           # See https://github.com/actions/checkout for more details.
           fetch-depth: 0
-      # pnpm ставится до setup-node: тот с cache: pnpm ищет уже существующий
-      # бинарь, чтобы вычислить путь к store.
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: lts/*
-          cache: pnpm
+
+      - uses: jdx/mise-action@v5
       - name: Install dependencies
         run: make install
       - name: Install Playwright Browsers
@@ -34,4 +29,3 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-
